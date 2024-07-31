@@ -1,22 +1,21 @@
 .navigation {
-  font-weight: bold;
-  display: block;
   position: fixed;
-  top: 0;
-  left: 0;
-  padding: 20px;
-  width: 100%;
-background: #d7eceb;
+width: 100%;
+  z-index: 10;
 
+  background-color: #fff;
+  padding: 10px;
+  border-bottom: 2px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navLink {
-  
-  color: black;
-margin: 20px;
-font-size: large;
+  margin-right: 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
 }
 
 .navLink:hover {
-  color:#8d3234;
+  color: #007bff;
 }
