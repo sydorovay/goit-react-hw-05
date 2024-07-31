@@ -6,14 +6,29 @@ import styles from './MoviesPage.module.css';
 const MoviesPage = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null); 
+  const [loading, setLoading] = useState(false); 
 
   const handleSearch = async (event) => {
     event.preventDefault();
+    if (query.trim() === '') {
+      setError('Please enter a search query.');
+      return;
+    }
+    setError(null); 
+    setLoading(true); 
     try {
-      const movies = await searchMovies(query);
-      setMovies(movies);
+      const results = await searchMovies(query);
+      if (results.length === 0) {
+        setError('No movies found.');
+      } else {
+        setMovies(results);
+      }
     } catch (error) {
+      setError('Failed to fetch movies. Please try again later.');
       console.error('Failed to search movies:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -32,7 +47,9 @@ const MoviesPage = () => {
         />
         <button type="submit" className={styles.button}>Search</button>
       </form>
-      <MovieList movies={movies} />
+      {loading && <p className={styles.loading}>Loading...</p>} {/* Індикатор завантаження */}
+      {error && <p className={styles.error}>{error}</p>} {/* Повідомлення про помилки */}
+      {movies.length > 0 && <MovieList movies={movies} />} {/* Відображення списку фільмів */}
     </div>
   );
 };
