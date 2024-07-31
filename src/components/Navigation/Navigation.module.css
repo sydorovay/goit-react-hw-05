@@ -1,4 +1,5 @@
 .navigation {
+  font-weight: bold;
   display: block;
   position: fixed;
   top: 0;
@@ -6,11 +7,13 @@
   padding: 20px;
   width: 100%;
 background: #d7eceb;
+
 }
 
 .navLink {
+  
   color: black;
-margin-right: 20px;
+margin: 20px;
 font-size: large;
 }
 

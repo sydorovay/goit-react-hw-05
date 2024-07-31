@@ -1,12 +1,12 @@
 .movieList {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 20px;
   padding: 20px;
 }
 
 .movieCard {
-  background-color: #f4fffe;
+  background-color: #f0fff4;
   border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
