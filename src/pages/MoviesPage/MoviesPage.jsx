@@ -47,9 +47,9 @@ const MoviesPage = () => {
         />
         <button type="submit" className={styles.button}>Search</button>
       </form>
-      {loading && <p className={styles.loading}>Loading...</p>} {/* Індикатор завантаження */}
-      {error && <p className={styles.error}>{error}</p>} {/* Повідомлення про помилки */}
-      {movies.length > 0 && <MovieList movies={movies} />} {/* Відображення списку фільмів */}
+      {loading && <p className={styles.loading}>Loading...</p>} 
+      {error && <p className={styles.error}>{error}</p>} 
+      {movies.length > 0 && <MovieList movies={movies} />} 
     </div>
   );
 };
