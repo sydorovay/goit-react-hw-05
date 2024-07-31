@@ -38,3 +38,9 @@ margin-top: 40px;
 .button:hover {
   background-color: #0056b3;
 }
+
+.error {
+  font-size: 36px;
+  font-weight: bold;
+  color : red
+}
