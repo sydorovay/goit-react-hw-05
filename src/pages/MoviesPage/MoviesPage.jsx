@@ -22,6 +22,8 @@ const MoviesPage = () => {
       <h1 className={styles.title}>Search Movies</h1>
       <form onSubmit={handleSearch} className={styles.form}>
         <input
+          id="movie-query"
+          name="movie-query"
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}

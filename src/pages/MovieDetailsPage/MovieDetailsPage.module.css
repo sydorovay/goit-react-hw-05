@@ -1,35 +1,57 @@
-.movieCast {
-  padding: 20px;
+.movieDetailsPage {
+  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
 }
 
-.title {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+
+.additionalInfo {
+  text-align: start;
+  align-items: start;
+  justify-content: start;
+  font-size: 36px;
+
 }
 
-.castList {
-  list-style: none;
-  padding: 0;
+.movieDetails {
   display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: start;
+}
+
+.link {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.poster {
+  margin: 40px;
+}
+
+ul {
+  display: flex;
+  gap: 10px;
   flex-wrap: wrap;
-  gap: 20px;
+  list-style: none;
 }
 
-.castItem {
-  text-align: center;
+li {
+  font-size: 24px;
+  border: 1px solid black;
+  padding: 15px;
 }
 
-.actorImage {
-  width: 100px;
-  height: auto;
-  border-radius: 50%;
+.goBackButton {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  padding: 10px;
 }
 
-.actorName {
-  font-size: 1rem;
-  margin-top: 10px;
+a {
+  color: #015769;
 }
-
-.routesCast{
-margin-right: 20px;
+a:hover {
+  color: #0080ff;
 }

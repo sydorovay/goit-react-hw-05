@@ -52,23 +52,25 @@ const MovieDetailsPage = () => {
 
   return (
     <div className={styles.movieDetailsPage}>
-      <button className={styles.goBackButton} onClick={() => navigate(-1)}>Go back</button>
+
       <div className={styles.movieDetails}>
-        <img src={posterUrl} alt={title} className={styles.poster} />
+        <img src={posterUrl} alt={title} className={styles.poster} width={300} />
         <div className={styles.details}>
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.overview}>{overview}</p>
+          <div className={styles.additionalInfo}>
+            <Link to="cast" className={styles.link}>Cast</Link>
+            <Link to="reviews" className={styles.link}>Reviews</Link>
+          </div>
         </div>
       </div>
-      <div className={styles.additionalInfo}>
-        <Link to="cast" className={styles.link}>Cast</Link>
-        <Link to="reviews" className={styles.link}>Reviews</Link>
-      </div>
-      <Routes >
+      <Routes className={styles.routes}>
         <Route path="cast" element={<MovieCast cast={cast} />} />
         <Route path="reviews" element={<MovieReviews reviews={reviews} />} />
       </Routes>
+      <button className={styles.goBackButton} onClick={() => navigate(-1)}>Go back</button>
     </div>
+
   );
 };
 
