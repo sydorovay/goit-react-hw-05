@@ -47,18 +47,20 @@ const MovieDetailsPage = () => {
 
   if (!movie) return <div>Loading...</div>;
 
-  const { title, overview, poster_path } = movie;
+  const { title, overview, poster_path, genres, release_date, vote_average } = movie;
   const posterUrl = poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : 'placeholder.jpg';
 
   return (
     <div className={styles.movieDetailsPage}>
-
       <div className={styles.movieDetails}>
         <img src={posterUrl} alt={title} className={styles.poster} width={300} />
         <div className={styles.details}>
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.overview}>{overview}</p>
           <div className={styles.additionalInfo}>
+            <p><strong>Genres:</strong> {genres.map(genre => genre.name).join(', ')}</p>
+            <p><strong>Release Year:</strong> {new Date(release_date).getFullYear()}</p>
+            <p><strong>Rating:</strong> {vote_average}</p>
             <Link to="cast" className={styles.link}>Cast</Link>
             <Link to="reviews" className={styles.link}>Reviews</Link>
           </div>
@@ -70,7 +72,6 @@ const MovieDetailsPage = () => {
       </Routes>
       <button className={styles.goBackButton} onClick={() => navigate(-1)}>Go back</button>
     </div>
-
   );
 };
 

@@ -1,8 +1,8 @@
 .navigation {
   position: fixed;
-width: 100%;
+  width: 100%;
   z-index: 10;
-
+  text-decoration: underline;
   background-color: #fff;
   padding: 10px;
   border-bottom: 2px solid #ddd;
@@ -18,4 +18,5 @@ width: 100%;
 
 .navLink:hover {
   color: #007bff;
+
 }
