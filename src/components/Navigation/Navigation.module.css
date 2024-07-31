@@ -1,0 +1,16 @@
+.navigation {
+  display: block;
+  position: fixed;
+  top: 0;
+  padding: 20px;
+  width: 100%;
+background: #d7eceb;
+}
+.navLink {
+margin-right: 20px;
+font-size: large;
+}
+
+.navLink:hover {
+color: rgb(1, 41, 23)
+}

@@ -7,19 +7,29 @@ const MoviesPage = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
 
-  const handleSearch = () => {
-    searchMovies(query).then(setMovies);
+  const handleSearch = async (event) => {
+    event.preventDefault();
+    try {
+      const movies = await searchMovies(query);
+      setMovies(movies);
+    } catch (error) {
+      console.error('Failed to search movies:', error);
+    }
   };
 
   return (
     <div className={styles.moviesPage}>
-      <h1>Search Movies</h1>
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search</button>
+      <h1 className={styles.title}>Search Movies</h1>
+      <form onSubmit={handleSearch} className={styles.form}>
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search for movies..."
+          className={styles.input}
+        />
+        <button type="submit" className={styles.button}>Search</button>
+      </form>
       <MovieList movies={movies} />
     </div>
   );

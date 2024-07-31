@@ -1,36 +1,45 @@
-import axios from 'axios';
+import axiosInstance from './axiosConfig';
 
-const API_KEY = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMjEyYTg0MzAyNGRiNzNiMGI5N2RlN2E5YTdlMzhiZSIsIm5iZiI6MTcyMjM3MTQ1MC44OTAwMjIsInN1YiI6IjY2YTk0NmFmNzhlNDg2MzRkNWNkMWU1NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.cCsWafmxhgLnxeSNN3bhwtiJ1q9GdM1l9wDoKvqfhAk';
-const BASE_URL = 'https://api.themoviedb.org/3';
-const headers = {
-  Authorization: `Bearer ${API_KEY}`,
-};
-
+// Запит для отримання популярних фільмів
 export const fetchTrendingMovies = async () => {
-  const response = await axios.get(`${BASE_URL}/trending/movie/day`, { headers });
+  const response = await axiosInstance.get('/trending/movie/day');
   return response.data.results;
 };
 
+// Запит для пошуку фільмів за ключовим словом
 export const searchMovies = async (query) => {
-  const response = await axios.get(`${BASE_URL}/search/movie`, {
-    params: { query },
-    headers,
+  const response = await axiosInstance.get(`/search/movie`, {
+    params: {
+      query,
+      include_adult: false,
+      language: 'en-US',
+      page: 1,
+    },
   });
   return response.data.results;
 };
 
+// Запит для отримання деталей фільму
 export const fetchMovieDetails = async (movieId) => {
-  const response = await axios.get(`${BASE_URL}/movie/${movieId}`, { headers });
+  const response = await axiosInstance.get(`/movie/${movieId}`, {
+    params: {
+      language: 'en-US',
+    },
+  });
   return response.data;
 };
 
 export const fetchMovieCredits = async (movieId) => {
-  const response = await axios.get(`${BASE_URL}/movie/${movieId}/credits`, { headers });
-  return response.data.cast;
+  const response = await axiosInstance.get(`/movie/${movieId}/credits`);
+  return response.data;
 };
 
 export const fetchMovieReviews = async (movieId) => {
-  const response = await axios.get(`${BASE_URL}/movie/${movieId}/reviews`, { headers });
-  return response.data.results;
+  const response = await axiosInstance.get(`/movie/${movieId}/reviews`, {
+    params: {
+      language: 'en-US',
+      page: 1,
+    },
+  });
+  return response.data;
 };
-  
