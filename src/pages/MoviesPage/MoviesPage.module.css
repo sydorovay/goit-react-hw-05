@@ -8,7 +8,7 @@
   color: #343a40;
   text-align: center;
   padding: 15px;
-margin-top: 40px;
+margin-top: 60px;
 }
 
 .form {
@@ -21,26 +21,39 @@ margin-top: 40px;
   padding: 10px;
   font-size: 1rem;
   border: 1px solid #ced4da;
+  box-shadow: 0 1px 3px #790003, 0 1px 3px rgba(0, 0, 0, 0.8);
   border-radius: 4px;
-  margin-right: 10px;
 }
 
-.button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: #0056b3;
+.input:hover ,
+.input:focus    {
+  box-shadow: 0 1px 5px #790003, 0 1px 5px rgba(0, 0, 0, 0.8);
 }
 
 .error {
   font-size: 36px;
   font-weight: bold;
   color : red
+}
+
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  padding-right: 30px;
+  /* Зробіть місце для кнопки очистки */
+}
+
+.clearButton {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
 }
