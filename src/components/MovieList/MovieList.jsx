@@ -1,12 +1,18 @@
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './MovieList.module.css';
 
 const MovieList = ({ movies }) => {
+  const location = useLocation(); // Отримання інформації про поточну URL-адресу
+
   return (
     <div className={styles.movieList}>
       {movies.map((movie) => (
-        <Link to={`/movies/${movie.id}`} key={movie.id} className={styles.movieCard}>
+        <Link
+          to={`/movies/${movie.id}`}
+          key={movie.id}
+          className={styles.movieCard}
+          state={{ from: location }} // Передача інформації про поточну URL-адресу
+        >
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title}
@@ -24,10 +30,6 @@ const MovieList = ({ movies }) => {
       ))}
     </div>
   );
-};
-
-MovieList.propTypes = {
-  movies: PropTypes.array.isRequired,
 };
 
 export default MovieList;
