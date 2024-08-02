@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useParams, useNavigate, Link, Routes, Route } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { useParams, useNavigate, Link, Routes, Route, useLocation } from 'react-router-dom';
 import { fetchMovieDetails, fetchMovieCredits, fetchMovieReviews } from '../../api';
 import MovieCast from '../../components/MovieCast/MovieCast';
 import MovieReviews from '../../components/MovieReviews/MovieReviews';
@@ -8,9 +8,13 @@ import styles from './MovieDetailsPage.module.css';
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation(); // Отримання поточної URL-адреси
   const [movie, setMovie] = useState(null);
   const [cast, setCast] = useState([]);
   const [reviews, setReviews] = useState([]);
+
+  // useRef для збереження попереднього місцезнаходження
+  const prevLocationRef = useRef(location.state?.from || '/movies');
 
   useEffect(() => {
     const getMovieDetails = async () => {
@@ -70,7 +74,12 @@ const MovieDetailsPage = () => {
         <Route path="cast" element={<MovieCast cast={cast} />} />
         <Route path="reviews" element={<MovieReviews reviews={reviews} />} />
       </Routes>
-      <button className={styles.goBackButton} onClick={() => navigate(-1)}>Go back</button>
+      <button
+        className={styles.goBackButton}
+        onClick={() => navigate(prevLocationRef.current)} // Використання prevLocationRef для навігації назад
+      >
+        Go back
+      </button>
     </div>
   );
 };
