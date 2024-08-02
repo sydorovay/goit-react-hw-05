@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchMovieCredits } from '../../api'; // Переконайтесь, що цей метод імпортовано з вашого API-файлу
+import { fetchMovieCredits } from '../../api'; 
 import styles from './MovieCast.module.css';
 
 const MovieCast = () => {
-  const { movieId } = useParams(); // Отримання movieId з URL
+  const { movieId } = useParams(); 
   const [cast, setCast] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

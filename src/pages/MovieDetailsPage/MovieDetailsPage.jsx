@@ -76,7 +76,7 @@ const MovieDetailsPage = () => {
       </Routes>
       <button
         className={styles.goBackButton}
-        onClick={() => navigate(prevLocationRef.current)} // Використання prevLocationRef для навігації назад
+        onClick={() => navigate(prevLocationRef.current)}
       >
         Go back
       </button>

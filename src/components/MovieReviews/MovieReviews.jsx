@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchMovieReviews } from '../../api'; // Переконайтесь, що цей метод імпортовано з вашого API-файлу
+import { fetchMovieReviews } from '../../api'; 
 import styles from './MovieReviews.module.css';
 
 const MovieReviews = () => {
@@ -23,7 +23,7 @@ const MovieReviews = () => {
     };
 
     getMovieReviews();
-  }, [movieId]); // Виконання API-запиту при зміні movieId
+  }, [movieId]); 
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;

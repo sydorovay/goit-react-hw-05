@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import styles from './MovieList.module.css';
 
 const MovieList = ({ movies }) => {
-  const location = useLocation(); // Отримання інформації про поточну URL-адресу
+  const location = useLocation(); 
 
   return (
     <div className={styles.movieList}>
@@ -11,7 +11,7 @@ const MovieList = ({ movies }) => {
           to={`/movies/${movie.id}`}
           key={movie.id}
           className={styles.movieCard}
-          state={{ from: location }} // Передача інформації про поточну URL-адресу
+          state={{ from: location }}
         >
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
