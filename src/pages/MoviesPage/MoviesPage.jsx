@@ -11,28 +11,29 @@ const MoviesPage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchMovies = async () => {
-      if (!query) return;
-      setLoading(true);
-      setError(null);
-      try {
-        const results = await searchMovies(query);
-        if (results.length === 0) {
-          setError('No movies found.');
-        } else {
-          setMovies(results);
-        }
-      } catch (error) {
-        setError('Failed to fetch movies. Please try again later.');
-        console.error('Failed to search movies:', error);
-      } finally {
-        setLoading(false);
+useEffect(() => {
+const query = searchParams.get("query")
+if (!query) return;
+  const fetchMovies = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const results = await searchMovies(query);
+      if (results.length === 0) {
+        setError('No movies found.');
+      } else {
+        setMovies(results);
       }
-    };
+    } catch (error) {
+    setError('Failed to fetch movies. Please try again later.');
+      console.error('Failed to search movies:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchMovies();
-  }, [query]);
+  fetchMovies();
+}, [searchParams]);
 
   const handleSearch = (event) => {
     event.preventDefault();
